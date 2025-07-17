@@ -14,3 +14,5 @@ Route::get('/backoffice/create-user', [UserController::class, 'showFormRegistro'
 Route::post('/backoffice/create-user', [UserController::class, 'guardarNuevo'])->name('user.form.registro');
 
 Route::post('/backoffice/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/backoffice/profile', [UserController::class, 'showProfile'])->name('user.profile');

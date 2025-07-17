@@ -108,7 +108,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
 
-            return redirect()->route('/')->with('success', "Bienvenido {$user->name}, tiene una sesión iniciada exitosamente.");
+            return redirect()->route('user.profile')->with('success', "Bienvenido {$user->name}, tiene una sesión iniciada exitosamente.");
         }
 
         return back()->withErrors([
@@ -123,4 +123,13 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('/')->with('success', 'Sesión cerrada exitosamente.');
     }
+public function showProfile()
+{
+    // You might want to pass user data to the view later
+    // $user = Auth::user();
+    // return view('backoffice/users/profile', compact('user'));
+
+    return view('backoffice/users/profile');
+}
+
 }
