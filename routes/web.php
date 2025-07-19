@@ -15,4 +15,11 @@ Route::post('/backoffice/create-user', [UserController::class, 'guardarNuevo'])-
 
 Route::post('/backoffice/logout', [UserController::class, 'logout'])->name('logout');
 
+
 Route::get('/backoffice/profile', [UserController::class, 'showProfile'])->name('user.profile');
+
+
+
+Route::put('/backoffice/profile', [UserController::class, 'updateProfile'])->name('backoffice.profile.update');
+
+

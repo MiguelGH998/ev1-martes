@@ -120,7 +120,6 @@
                   id="email"
                   name="username"
                   placeholder="Ingrese su usuario"
-                  value="scabezas@ciisa.cl"
                   autofocus />
               </div>
               <div class="mb-6 form-password-toggle form-control-validation">
@@ -133,7 +132,6 @@
                     name="password"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                     aria-describedby="password" 
-                    value="holaMundo" 
                     />
                   <span class="input-group-text cursor-pointer"><i class="icon-base ti tabler-eye-off"></i></span>
                 </div>

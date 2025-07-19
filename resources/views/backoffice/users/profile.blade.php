@@ -1,7 +1,7 @@
 <!doctype html>
 
 <html
-  lang="en"
+  lang="es"
   class="layout-navbar-fixed layout-menu-fixed layout-compact"
   dir="ltr"
   data-skin="default"
@@ -14,12 +14,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo: User Profile - Profile | Vuexy - Bootstrap Dashboard PRO</title>
+    <title>Sonkei FC | Perfil y Dashboard</title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/vuexy//assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -102,7 +102,7 @@
                     </svg>
                   </span>
                 </span>
-                <span class="app-brand-text demo menu-text fw-bold text-heading">Vuexy</span>
+                <span class="app-brand-text demo menu-text fw-bold text-heading">Sonkei FC</span>
               </a>
 
               <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
@@ -338,7 +338,7 @@
                           <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                               <div class="avatar">
-                                <img src="../../assets/img/avatars/1.png" alt class="rounded-circle" />
+                                <img src="/vuexy//assets/img/avatars/1.png" alt class="rounded-circle" />
                               </div>
                             </div>
                             <div class="flex-grow-1">
@@ -382,7 +382,7 @@
                           <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                               <div class="avatar">
-                                <img src="../../assets/img/avatars/2.png" alt class="rounded-circle" />
+                                <img src="/vuexy//assets/img/avatars/2.png" alt class="rounded-circle" />
                               </div>
                             </div>
                             <div class="flex-grow-1">
@@ -428,7 +428,7 @@
                           <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                               <div class="avatar">
-                                <img src="../../assets/img/avatars/9.png" alt class="rounded-circle" />
+                                <img src="/vuexy//assets/img/avatars/9.png" alt class="rounded-circle" />
                               </div>
                             </div>
                             <div class="flex-grow-1">
@@ -476,7 +476,7 @@
                           <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                               <div class="avatar">
-                                <img src="../../assets/img/avatars/5.png" alt class="rounded-circle" />
+                                <img src="/vuexy//assets/img/avatars/5.png" alt class="rounded-circle" />
                               </div>
                             </div>
                             <div class="flex-grow-1">
@@ -498,7 +498,7 @@
                           <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                               <div class="avatar">
-                                <img src="../../assets/img/avatars/6.png" alt class="rounded-circle" />
+                                <img src="/vuexy//assets/img/avatars/6.png" alt class="rounded-circle" />
                               </div>
                             </div>
                             <div class="flex-grow-1">
@@ -562,7 +562,7 @@
                     href="javascript:void(0);"
                     data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../../assets/img/avatars/1.png" alt class="rounded-circle" />
+                      <img src="/vuexy/assets/img/avatars/1.png" alt class="rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -571,11 +571,11 @@
                         <div class="d-flex align-items-center">
                           <div class="flex-shrink-0 me-2">
                             <div class="avatar avatar-online">
-                              <img src="../../assets/img/avatars/1.png" alt class="rounded-circle" />
+                              <img src="/vuexy/assets/img/avatars/1.png" alt class="rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <h6 class="mb-0">John Doe</h6>
+                            <h6 class="mb-0">{{ $user->name }}</h6>
                             <small class="text-body-secondary">Admin</small>
                           </div>
                         </div>
@@ -587,13 +587,13 @@
                     <li>
                       <a class="dropdown-item" href="pages-profile-user.html">
                         <i class="icon-base ti tabler-user me-3 icon-md"></i
-                        ><span class="align-middle">My Profile</span>
+                        ><span class="align-middle">Mi Perfil</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="pages-account-settings-account.html">
                         <i class="icon-base ti tabler-settings me-3 icon-md"></i
-                        ><span class="align-middle">Settings</span>
+                        ><span class="align-middle">Configuración</span>
                       </a>
                     </li>
                     <li>
@@ -623,10 +623,14 @@
                       </a>
                     </li>
                     <li>
-                      <div class="d-grid px-2 pt-2 pb-1">
-                        <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html" target="_blank">
-                          <small class="align-middle">Logout</small>
-                          <i class="icon-base ti tabler-logout ms-2 icon-14px"></i>
+                    <div class="d-grid px-2 pt-2 pb-1">
+                    <form method="POST" action="{{ route('logout') }}" class="d-grid px-2 pt-2 pb-1">
+                    @csrf
+                    <button class="btn btn-sm btn-danger d-flex" type="submit">
+                        <small class="align-middle">Cerrar Sesión</small>
+                        <i class="icon-base ti tabler-logout ms-2 icon-14px"></i>
+                    </button>
+                </form>
                         </a>
                       </div>
                     </li>
@@ -1794,12 +1798,12 @@
                 <div class="col-12">
                   <div class="card mb-6">
                     <div class="user-profile-header-banner">
-                      <img src="../../assets/img/pages/profile-banner.png" alt="Banner image" class="rounded-top" />
+                      <img src="/vuexy/assets/img/pages/profile-banner.png" alt="Banner image" class="rounded-top" />
                     </div>
                     <div class="user-profile-header d-flex flex-column flex-lg-row text-sm-start text-center mb-5">
                       <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
                         <img
-                          src="../../assets/img/avatars/1.png"
+                          src="/vuexy/assets/img/avatars/1.png"
                           alt="user image"
                           class="d-block h-auto ms-0 ms-sm-6 rounded user-profile-img" />
                       </div>
@@ -1807,7 +1811,7 @@
                         <div
                           class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-5 flex-md-row flex-column gap-4">
                           <div class="user-profile-info">
-                            <h4 class="mb-2 mt-lg-6">John Doe</h4>
+                            <h4 class="mb-2 mt-lg-6">{{ $user->name }}</h4>
                             <ul
                               class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-4 my-2">
                               <li class="list-inline-item d-flex gap-2 align-items-center">
@@ -1816,16 +1820,17 @@
                               </li>
                               <li class="list-inline-item d-flex gap-2 align-items-center">
                                 <i class="icon-base ti tabler-map-pin icon-lg"></i
-                                ><span class="fw-medium">Vatican City</span>
+                                ><span class="fw-medium">{{ $user->commune ?? 'N/A' }}</span>
                               </li>
                               <li class="list-inline-item d-flex gap-2 align-items-center">
                                 <i class="icon-base ti tabler-calendar icon-lg"></i
-                                ><span class="fw-medium"> Joined April 2021</span>
+                                ><span class="fw-medium"> Se unió el {{ $user->created_at ? $user->created_at->format('d-m-Y') : 'N/A' }}</span>
                               </li>
                             </ul>
                           </div>
                           <a href="javascript:void(0)" class="btn btn-primary mb-1">
-                            <i class="icon-base ti tabler-user-check icon-xs me-2"></i>Connected
+                            <i class="icon-base ti tabler-user-check icon-xs me-2"></i>Online
+                           
                           </a>
                         </div>
                       </div>
@@ -1834,7 +1839,7 @@
                 </div>
               </div>
               <!--/ Header -->
-              @include('backoffice._partials.header')
+    
               <!-- Navbar pills -->
               <div class="row">
                 <div class="col-md-12">
@@ -1842,22 +1847,22 @@
                     <ul class="nav nav-pills flex-column flex-sm-row mb-6 gap-sm-0 gap-2">
                       <li class="nav-item">
                         <a class="nav-link active" href="javascript:void(0);"
-                          ><i class="icon-base ti tabler-user-check icon-sm me-1_5"></i> Profile</a
+                          ><i class="icon-base ti tabler-user-check icon-sm me-1_5"></i> Perfil</a
                         >
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="pages-profile-teams.html"
-                          ><i class="icon-base ti tabler-users icon-sm me-1_5"></i> Teams</a
+                          ><i class="icon-base ti tabler-users icon-sm me-1_5"></i> Equipos</a
                         >
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="pages-profile-projects.html"
-                          ><i class="icon-base ti tabler-layout-grid icon-sm me-1_5"></i> Projects</a
+                          ><i class="icon-base ti tabler-layout-grid icon-sm me-1_5"></i> Proyectos</a
                         >
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="pages-profile-connections.html"
-                          ><i class="icon-base ti tabler-link icon-sm me-1_5"></i> Connections</a
+                          ><i class="icon-base ti tabler-link icon-sm me-1_5"></i> Conexiones</a
                         >
                       </li>
                     </ul>
@@ -1867,65 +1872,88 @@
               <!--/ Navbar pills -->
 
               <!-- User Profile Content -->
+              <div class="card mb-3">
+              <div class="card-body">
               <div class="row">
                 <div class="col-xl-4 col-lg-5 col-md-5">
                   <!-- About User -->
-                  <div class="card mb-6">
-                    <div class="card-body">
-                      <p class="card-text text-uppercase text-body-secondary small mb-0">About</p>
-                      <ul class="list-unstyled my-3 py-1">
-                        <li class="d-flex align-items-center mb-4">
-                          <i class="icon-base ti tabler-user icon-lg"></i
-                          ><span class="fw-medium mx-2">Full Name:</span> <span>John Doe</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-4">
-                          <i class="icon-base ti tabler-check icon-lg"></i><span class="fw-medium mx-2">Status:</span>
-                          <span>Active</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-4">
-                          <i class="icon-base ti tabler-crown icon-lg"></i><span class="fw-medium mx-2">Role:</span>
-                          <span>Developer</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-4">
-                          <i class="icon-base ti tabler-flag icon-lg"></i><span class="fw-medium mx-2">Country:</span>
-                          <span>USA</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-2">
-                          <i class="icon-base ti tabler-language icon-lg"></i
-                          ><span class="fw-medium mx-2">Languages:</span> <span>English</span>
-                        </li>
-                      </ul>
-                      <p class="card-text text-uppercase text-body-secondary small mb-0">Contacts</p>
-                      <ul class="list-unstyled my-3 py-1">
-                        <li class="d-flex align-items-center mb-4">
-                          <i class="icon-base ti tabler-phone-call icon-lg"></i
-                          ><span class="fw-medium mx-2">Contact:</span>
-                          <span>(123) 456-7890</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-4">
-                          <i class="icon-base ti tabler-messages icon-lg"></i
-                          ><span class="fw-medium mx-2">Skype:</span> <span>john.doe</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-4">
-                          <i class="icon-base ti tabler-mail icon-lg"></i><span class="fw-medium mx-2">Email:</span>
-                          <span>john.doe@example.com</span>
-                        </li>
-                      </ul>
-                      <p class="card-text text-uppercase text-body-secondary small mb-0">Teams</p>
-                      <ul class="list-unstyled mb-0 mt-3 pt-1">
-                        <li class="d-flex flex-wrap mb-4">
-                          <span class="fw-medium me-2">Backend Developer</span><span>(126 Members)</span>
-                        </li>
-                        <li class="d-flex flex-wrap">
-                          <span class="fw-medium me-2">React Developer</span><span>(98 Members)</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <div class="about-section">
+    <h2> {{ $user->name }}</h2>
+    <p>
+        <strong>Edad:</strong> {{ $user->age ?? 'N/A' }}<br>
+        <strong>Dirección:</strong> {{ $user->address ?? 'N/A' }}<br>
+        <strong>Comuna:</strong> {{ $user->commune ?? 'N/A' }}<br>
+        <strong>Teléfono 1:</strong> {{ $user->phone_number_1 ?? 'N/A' }}<br>
+        <strong>Teléfono 2:</strong> {{ $user->phone_number_2 ?? 'N/A' }}<br>
+        <strong>Fecha de Creación:</strong> {{ $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : 'N/A' }} {{-- Added --}}
+    </p>
+    </p>
+
+    <button class="btn btn-primary mb-1" id="edit-profile-button">Editar Perfil</button>
+</div>
+
+<div id="edit-profile-form" style="display: none;">
+    <form action="{{ route('backoffice.profile.update') }}" method="PUT">
+        @csrf
+        @method('PUT')
+
+        <div class="mb-3">          
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}">
+            @error('name')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+                      <label for="age">Edad:</label>
+            <input type="number" id="age" name="age" class="form-control" value="{{ old('age', $user->age) }}">
+            @error('age')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" class="form-control" value="{{ old('address', $user->address) }}">
+            @error('address')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="commune">Comuna:</label>
+            <input type="text" id="commune" name="commune" class="form-control" value="{{ old('commune', $user->commune) }}">
+            @error('commune')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="phone_number_1">Teléfono 1:</label>
+            <input type="text" id="phone_number_1" name="phone_number_1" class="form-control" value="{{ old('phone_number_1', $user->phone_number_1) }}">
+            @error('phone_number_1')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="phone_number_2">Teléfono 2:</label>
+            <input type="text" id="phone_number_2" name="phone_number_2" class="form-control" value="{{ old('phone_number_2', $user->phone_number_2) }}">
+            @error('phone_number_2')
+                <span class="error">{{ $message }}</span>
+            @enderror
+        </div>
+        
+        <button class="btn btn-primary mb-1" type="submit">Guardar Cambios</button>
+    </form>
+</div>
                   <!--/ About User -->
                   <!-- Profile Overview -->
+                  <br>
                   <div class="card mb-6">
                     <div class="card-body">
+                      
                       <p class="card-text text-uppercase text-body-secondary small">Overview</p>
                       <ul class="list-unstyled mb-0">
                         <li class="d-flex align-items-center mb-4">
@@ -1982,7 +2010,7 @@
                             <p class="mb-2">Invoices have been paid to the company</p>
                             <div class="d-flex align-items-center mb-2">
                               <div class="badge bg-lighter rounded d-flex align-items-center">
-                                <img src="../../assets//img/icons/misc/pdf.png" alt="img" width="15" class="me-2" />
+                                <img src="/vuexy//assets//img/icons/misc/pdf.png" alt="img" width="15" class="me-2" />
                                 <span class="h6 mb-0 text-body">invoices.pdf</span>
                               </div>
                             </div>
@@ -1999,7 +2027,7 @@
                             <div class="d-flex justify-content-between flex-wrap gap-2 mb-2">
                               <div class="d-flex flex-wrap align-items-center mb-50">
                                 <div class="avatar avatar-sm me-2">
-                                  <img src="../../assets/img/avatars/1.png" alt="Avatar" class="rounded-circle" />
+                                  <img src="/vuexy//assets/img/avatars/1.png" alt="Avatar" class="rounded-circle" />
                                 </div>
                                 <div>
                                   <p class="mb-0 small fw-medium">Lester McCarthy (Client)</p>
@@ -2028,7 +2056,7 @@
                                       data-bs-placement="top"
                                       title="Vinnie Mostowy"
                                       class="avatar pull-up">
-                                      <img class="rounded-circle" src="../../assets/img/avatars/1.png" alt="Avatar" />
+                                      <img class="rounded-circle" src="/vuexy//assets/img/avatars/1.png" alt="Avatar" />
                                     </li>
                                     <li
                                       data-bs-toggle="tooltip"
@@ -2036,7 +2064,7 @@
                                       data-bs-placement="top"
                                       title="Allen Rieske"
                                       class="avatar pull-up">
-                                      <img class="rounded-circle" src="../../assets/img/avatars/4.png" alt="Avatar" />
+                                      <img class="rounded-circle" src="/vuexy//assets/img/avatars/4.png" alt="Avatar" />
                                     </li>
                                     <li
                                       data-bs-toggle="tooltip"
@@ -2044,7 +2072,7 @@
                                       data-bs-placement="top"
                                       title="Julee Rossignol"
                                       class="avatar pull-up">
-                                      <img class="rounded-circle" src="../../assets/img/avatars/2.png" alt="Avatar" />
+                                      <img class="rounded-circle" src="/vuexy//assets/img/avatars/2.png" alt="Avatar" />
                                     </li>
                                     <li class="avatar">
                                       <span
@@ -2097,7 +2125,7 @@
                               <div class="d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
-                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle" />
+                                    <img src="/vuexy//assets/img/avatars/2.png" alt="Avatar" class="rounded-circle" />
                                   </div>
                                   <div class="me-2">
                                     <h6 class="mb-0">Cecilia Payne</h6>
@@ -2115,7 +2143,7 @@
                               <div class="d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
-                                    <img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle" />
+                                    <img src="/vuexy//assets/img/avatars/3.png" alt="Avatar" class="rounded-circle" />
                                   </div>
                                   <div class="me-2">
                                     <h6 class="mb-0">Curtis Fletcher</h6>
@@ -2133,7 +2161,7 @@
                               <div class="d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
-                                    <img src="../../assets/img/avatars/10.png" alt="Avatar" class="rounded-circle" />
+                                    <img src="/vuexy//assets/img/avatars/10.png" alt="Avatar" class="rounded-circle" />
                                   </div>
                                   <div class="me-2">
                                     <h6 class="mb-0">Alice Stone</h6>
@@ -2151,7 +2179,7 @@
                               <div class="d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
-                                    <img src="../../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
+                                    <img src="/vuexy//assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
                                   </div>
                                   <div class="me-2">
                                     <h6 class="mb-0">Darrell Barnes</h6>
@@ -2170,7 +2198,7 @@
                               <div class="d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
-                                    <img src="../../assets/img/avatars/12.png" alt="Avatar" class="rounded-circle" />
+                                    <img src="/vuexy//assets/img/avatars/12.png" alt="Avatar" class="rounded-circle" />
                                   </div>
                                   <div class="me-2">
                                     <h6 class="mb-0">Eugenia Moore</h6>
@@ -2224,7 +2252,7 @@
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
                                     <img
-                                      src="../../assets/img/icons/brands/react-label.png"
+                                      src="/vuexy//assets/img/icons/brands/react-label.png"
                                       alt="Avatar"
                                       class="rounded-circle" />
                                   </div>
@@ -2243,7 +2271,7 @@
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
                                     <img
-                                      src="../../assets/img/icons/brands/support-label.png"
+                                      src="/vuexy//assets/img/icons/brands/support-label.png"
                                       alt="Avatar"
                                       class="rounded-circle" />
                                   </div>
@@ -2262,7 +2290,7 @@
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
                                     <img
-                                      src="../../assets/img/icons/brands/figma-label.png"
+                                      src="/vuexy//assets/img/icons/brands/figma-label.png"
                                       alt="Avatar"
                                       class="rounded-circle" />
                                   </div>
@@ -2281,7 +2309,7 @@
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
                                     <img
-                                      src="../../assets/img/icons/brands/vue-label.png"
+                                      src="/vuexy//assets/img/icons/brands/vue-label.png"
                                       alt="Avatar"
                                       class="rounded-circle" />
                                   </div>
@@ -2300,7 +2328,7 @@
                                 <div class="d-flex align-items-center">
                                   <div class="avatar me-2">
                                     <img
-                                      src="../../assets/img/icons/brands/twitter-label.png"
+                                      src="/vuexy//assets/img/icons/brands/twitter-label.png"
                                       alt="Avatar"
                                       class="rounded-circle" />
                                   </div>
@@ -2347,7 +2375,7 @@
               <!--/ User Profile Content -->
             </div>
             <!--/ Content -->
-            @include('backoffice._partials.footer')
+   
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl">
@@ -2358,26 +2386,9 @@
                     <script>
                       document.write(new Date().getFullYear());
                     </script>
-                    , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link">Pixinvent</a>
+                    , Creado ❤️ por  <a href="https://github.com/MiguelGH998" target="_blank" class="footer-link">YO</a>
                   </div>
                   <div class="d-none d-lg-inline-block">
-                    <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank"
-                      >License</a
-                    >
-                    <a href="https://themeforest.net/user/pixinvent/portfolio" target="_blank" class="footer-link me-4"
-                      >More Themes</a
-                    >
-
-                    <a
-                      href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/"
-                      target="_blank"
-                      class="footer-link me-4"
-                      >Documentation</a
-                    >
-
-                    <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block"
-                      >Support</a
-                    >
                   </div>
                 </div>
               </div>
@@ -2404,34 +2415,41 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/theme.js -->
 
-    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/vuexy//assets/vendor/libs/jquery/jquery.js"></script>
 
-    <script src="../../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../../assets/vendor/js/bootstrap.js"></script>
-    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="/vuexy//assets/vendor/libs/popper/popper.js"></script>
+    <script src="/vuexy//assets/vendor/js/bootstrap.js"></script>
+    <script src="/vuexy//assets/vendor/libs/node-waves/node-waves.js"></script>
 
-    <script src="../../assets/vendor/libs/@algolia/autocomplete-js.js"></script>
+    <script src="/vuexy//assets/vendor/libs/@algolia/autocomplete-js.js"></script>
 
-    <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
+    <script src="/vuexy//assets/vendor/libs/pickr/pickr.js"></script>
 
-    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/vuexy//assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="/vuexy//assets/vendor/libs/hammer/hammer.js"></script>
 
-    <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+    <script src="/vuexy//assets/vendor/libs/i18n/i18n.js"></script>
 
-    <script src="../../assets/vendor/js/menu.js"></script>
+    <script src="/vuexy//assets/vendor/js/menu.js"></script>
+
+    <script>
+    document.getElementById('edit-profile-button').addEventListener('click', function() {
+        document.getElementById('edit-profile-form').style.display = 'block';
+        this.style.display = 'none'; // Hide the edit button
+    });
+</script>
 
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="/vuexy//assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
 
     <!-- Main JS -->
 
-    <script src="../../assets/js/main.js"></script>
+    <script src="/vuexy//assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/app-user-view-account.js"></script>
+    <script src="/vuexy//assets/js/app-user-view-account.js"></script>
   </body>
 </html>

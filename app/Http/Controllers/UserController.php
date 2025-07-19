@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;  // Importar la fachada Hash
 use Illuminate\Validation\Rules\Password;  // Importar la clase Password
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -121,15 +122,45 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('/')->with('success', 'Sesión cerrada exitosamente.');
+        return redirect()->route('user.form.show.login')->with('success', 'Sesión cerrada exitosamente.');
     }
-public function showProfile()
-{
-    // You might want to pass user data to the view later
-    // $user = Auth::user();
-    // return view('backoffice/users/profile', compact('user'));
+    public function showProfile()
+    {
+        $user = Auth::user(); // Get the authenticated user
+        return view('backoffice/users/profile', compact('user'));
+    }
 
-    return view('backoffice/users/profile');
-}
+    public function updateProfile(Request $request)
+    {
+        $user = Auth::user(); // Get the authenticated user
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'age' => ['nullable', 'integer', 'min:0'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'commune' => ['nullable', 'string', 'max:255'],
+            'phone_number_1' => ['nullable', 'string', 'max:20'],
+            'phone_number_2' => ['nullable', 'string', 'max:20'],
+            // Add validation rules for other profile fields
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'age' => $request->age,
+            'address' => $request->address,
+            'commune' => $request->commune,
+            'phone_number_1' => $request->phone_number_1,
+            'phone_number_2' => $request->phone_number_2,
+            // Update other profile fields
+            
+        ]);
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+
 
 }
