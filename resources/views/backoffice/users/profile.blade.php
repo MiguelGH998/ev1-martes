@@ -1893,7 +1893,7 @@
 </div>
 
 <div id="edit-profile-form" style="display: none;">
-    <form action="{{ route('backoffice.profile.update') }}" method="PUT">
+    <form action="{{ route('backoffice.profile.update') }}" method="POST">
         @csrf
         @method('PUT')
 
