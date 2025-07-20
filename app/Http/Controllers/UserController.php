@@ -62,7 +62,7 @@ class UserController extends Controller
         // event(new Registered($user));
 
         // 4. Redirigir a la página de login con un mensaje de éxito
-        return redirect()->route('/')->with('success', 'Usuario creado, debe iniciar sesión.');
+        return redirect()->route('user.form.show.login')->with('success', 'Usuario creado, debe iniciar sesión.');
     }
 
     public function showFormLogin()

@@ -14,7 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo: Register Cover - Pages | Vuexy - Bootstrap Dashboard PRO</title>
+    <title>Sonkei FC | Registro Usuario Nuevo </title>
 
     <meta name="description" content="" />
 
@@ -158,7 +158,7 @@
                   </label>
                 </div>
               </div>
-              <button class="btn btn-primary d-grid w-100">Registerarse</button>
+              <button class="btn btn-primary d-grid w-100">Registrarse</button>
             </form>
 
             <p class="text-center">
