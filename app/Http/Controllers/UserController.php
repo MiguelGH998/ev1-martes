@@ -139,8 +139,8 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $user = Auth::user(); // Get the authenticated user
-
+        $user = Auth::user(); // Usuario autenticado
+     
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'age' => ['nullable', 'integer', 'min:0'],
@@ -148,13 +148,19 @@ class UserController extends Controller
             'commune' => ['nullable', 'string', 'max:255'],
             'phone_number_1' => ['nullable', 'string', 'max:20'],
             'phone_number_2' => ['nullable', 'string', 'max:20'],
-            // Add validation rules for other profile fields
+            // Validación para cambio de correo (si se intenta cambiar)
+            'new_email' => ['nullable', 'email', 'max:255', 'confirmed', 'unique:users,username,' . $user->id],
+     
+            // Validación para cambio de contraseña (si se intenta cambiar)
+            'current_password' => ['nullable', 'required_with:password', 'current_password'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ]);
-
+     
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
+     
+        // Actualización de datos normales
         $user->update([
             'name' => $request->name,
             'age' => $request->age,
@@ -162,12 +168,24 @@ class UserController extends Controller
             'commune' => $request->commune,
             'phone_number_1' => $request->phone_number_1,
             'phone_number_2' => $request->phone_number_2,
-            // Update other profile fields
-            
         ]);
-
-        return redirect()->back()->with('success', 'Profile updated successfully!');
+     
+        // Cambiar correo solo si se ingresó uno nuevo
+        if ($request->filled('new_email') && $request->new_email !== $user->username) {
+            $user->username = $request->new_email;
+            $user->save();
+        }
+     
+        // Cambiar contraseña solo si se ingresó una nueva
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+     
+        return redirect()->back()->with('success', 'Perfil actualizado exitosamente.');
     }
+
+ 
     function validarRUT($rut) {
         // Limpiar RUT (quitar puntos y guion)
         $rut = preg_replace('/[^0-9kK]/', '', $rut);

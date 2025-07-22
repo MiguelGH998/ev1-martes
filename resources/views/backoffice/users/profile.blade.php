@@ -1881,6 +1881,7 @@
     <h2> {{ $user->name }}</h2>
     <p>
         <strong>Edad:</strong> {{ $user->age ?? 'N/A' }}<br>
+        <strong>Email:</strong> {{ $user->username ?? 'N/A' }}<br>
         <strong>Dirección:</strong> {{ $user->address ?? 'N/A' }}<br>
         <strong>Comuna:</strong> {{ $user->commune ?? 'N/A' }}<br>
         <strong>Teléfono 1:</strong> {{ $user->phone_number_1 ?? 'N/A' }}<br>
@@ -1893,61 +1894,129 @@
 </div>
 
 <div id="edit-profile-form" style="display: none;">
-    <form action="{{ route('backoffice.profile.update') }}" method="POST">
+<form action="{{ route('backoffice.profile.update') }}" method="POST">
+
         @csrf
+
         @method('PUT')
+ 
+        <!-- Datos Personales -->
+<div class="mb-3">          
+<label for="name">Nombre:</label>
+<input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}">
 
-        <div class="mb-3">          
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}">
             @error('name')
-                <span class="error">{{ $message }}</span>
-            @enderror
-        </div>
+<span class="error">{{ $message }}</span>
 
-        <div class="mb-3">
-                      <label for="age">Edad:</label>
-            <input type="number" id="age" name="age" class="form-control" value="{{ old('age', $user->age) }}">
-            @error('age')
-                <span class="error">{{ $message }}</span>
             @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="address">Dirección:</label>
-            <input type="text" id="address" name="address" class="form-control" value="{{ old('address', $user->address) }}">
-            @error('address')
-                <span class="error">{{ $message }}</span>
-            @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="commune">Comuna:</label>
-            <input type="text" id="commune" name="commune" class="form-control" value="{{ old('commune', $user->commune) }}">
-            @error('commune')
-                <span class="error">{{ $message }}</span>
-            @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="phone_number_1">Teléfono 1:</label>
-            <input type="text" id="phone_number_1" name="phone_number_1" class="form-control" value="{{ old('phone_number_1', $user->phone_number_1) }}">
-            @error('phone_number_1')
-                <span class="error">{{ $message }}</span>
-            @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="phone_number_2">Teléfono 2:</label>
-            <input type="text" id="phone_number_2" name="phone_number_2" class="form-control" value="{{ old('phone_number_2', $user->phone_number_2) }}">
-            @error('phone_number_2')
-                <span class="error">{{ $message }}</span>
-            @enderror
-        </div>
-        
-        <button class="btn btn-primary mb-1" type="submit">Guardar Cambios</button>
-    </form>
 </div>
+ 
+        <div class="mb-3">
+<label for="age">Edad:</label>
+<input type="number" id="age" name="age" class="form-control" value="{{ old('age', $user->age) }}">
+
+            @error('age')
+<span class="error">{{ $message }}</span>
+
+            @enderror
+</div>
+ 
+        <div class="mb-3">
+<label for="address">Dirección:</label>
+<input type="text" id="address" name="address" class="form-control" value="{{ old('address', $user->address) }}">
+
+            @error('address')
+<span class="error">{{ $message }}</span>
+
+            @enderror
+</div>
+ 
+        <div class="mb-3">
+<label for="commune">Comuna:</label>
+<input type="text" id="commune" name="commune" class="form-control" value="{{ old('commune', $user->commune) }}">
+
+            @error('commune')
+<span class="error">{{ $message }}</span>
+
+            @enderror
+</div>
+ 
+        <div class="mb-3">
+<label for="phone_number_1">Teléfono 1:</label>
+<input type="text" id="phone_number_1" name="phone_number_1" class="form-control" value="{{ old('phone_number_1', $user->phone_number_1) }}">
+
+            @error('phone_number_1')
+<span class="error">{{ $message }}</span>
+
+            @enderror
+</div>
+ 
+        <div class="mb-3">
+<label for="phone_number_2">Teléfono 2:</label>
+<input type="text" id="phone_number_2" name="phone_number_2" class="form-control" value="{{ old('phone_number_2', $user->phone_number_2) }}">
+
+            @error('phone_number_2')
+<span class="error">{{ $message }}</span>
+
+            @enderror
+</div>
+
+<!-- Sección para cambiar el correo -->
+<hr>
+<h5>Cambiar Correo</h5>
+ 
+        <div class="mb-3">
+<label for="current_email">Correo Actual:</label>
+<input type="text" id="current_email" class="form-control" value="{{ $user->username }}" disabled>
+</div>
+ 
+        <div class="mb-3">
+<label for="new_email">Nuevo Correo:</label>
+<input type="email" id="new_email" name="new_email" class="form-control" placeholder="Ingrese su nuevo correo">
+            @error('new_email')
+<span class="error">{{ $message }}</span>
+            @enderror
+</div>
+ 
+        <div class="mb-3">
+<label for="new_email_confirmation">Confirmar Nuevo Correo:</label>
+<input type="email" id="new_email_confirmation" name="new_email_confirmation" class="form-control" placeholder="Confirme su nuevo correo">
+</div>
+ 
+        <!-- Sección para cambio de contraseña -->
+<hr>
+<h5>Cambiar Contraseña</h5>
+ 
+        <div class="mb-3">
+<label for="current_password">Contraseña Actual:</label>
+<input type="password" id="current_password" name="current_password" class="form-control">
+
+            @error('current_password')
+<span class="error">{{ $message }}</span>
+
+            @enderror
+</div>
+ 
+        <div class="mb-3">
+<label for="password">Nueva Contraseña:</label>
+<input type="password" id="password" name="password" class="form-control">
+
+            @error('password')
+<span class="error">{{ $message }}</span>
+
+            @enderror
+</div>
+ 
+        <div class="mb-3">
+<label for="password_confirmation">Confirmar Nueva Contraseña:</label>
+<input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
+</div>
+ 
+        <button class="btn btn-primary mb-1" type="submit">Guardar Cambios</button>
+</form>
+</div>
+
+ 
                   <!--/ About User -->
                   <!-- Profile Overview -->
                   <br>
