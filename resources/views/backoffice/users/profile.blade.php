@@ -2445,24 +2445,37 @@
             </div>
             <!--/ Content -->
    
-            <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl">
-                <div
-                  class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
-                  <div class="text-body">
-                    ©
-                    <script>
-                      document.write(new Date().getFullYear());
-                    </script>
-                    , Creado ❤️ por  <a href="https://github.com/MiguelGH998" target="_blank" class="footer-link">YO</a>
-                  </div>
-                  <div class="d-none d-lg-inline-block">
-                  </div>
-                </div>
-              </div>
-            </footer>
-            <!-- / Footer -->
+           <!-- Footer -->
+<footer class="content-footer footer bg-footer-theme">
+<div class="container-xxl">
+<div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+<div class="text-body">
+
+        © 
+<script>
+
+          document.write(new Date().getFullYear());
+</script> 
+
+        , Desarrollado para 
+<a href="https://www.ipss.cl" target="_blank" class="footer-link">
+
+          Instituto Profesional San Sebastián (IPSS)
+</a> 
+
+        | Creado ❤️ por Miguel, Justin, Malcolm
+<a href="https://github.com/MiguelGH998" target="_blank" class="footer-link">
+
+          github
+</a>
+</div>
+<div class="d-none d-lg-inline-block">
+</div>
+</div>
+</div>
+</footer>
+<!-- / Footer -->
+ 
 
             <div class="content-backdrop fade"></div>
           </div>
