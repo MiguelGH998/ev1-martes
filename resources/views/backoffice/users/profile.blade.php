@@ -585,7 +585,7 @@
                       <div class="dropdown-divider my-1 mx-n2"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="pages-profile-user.html">
+                      <a class="dropdown-item" href="{{ route('user.profile') }}">
                         <i class="icon-base ti tabler-user me-3 icon-md"></i
                         ><span class="align-middle">Mi Perfil</span>
                       </a>
@@ -660,33 +660,33 @@
                     </a>
                     <ul class="menu-sub">
                       <li class="menu-item">
-                        <a href="dashboards-analytics.html" class="menu-link">
+                        <a href="{{ route('user.dashboard') }}" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-chart-pie-2"></i>
-                          <div data-i18n="Analytics">Analytics</div>
+                          <div data-i18n="Dashboard Principal">Dashboard Principal</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="dashboards-crm.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-vector-bezier-circle"></i>
-                          <div data-i18n="CRM">CRM</div>
+                          <div data-i18n="Este NO">Este NO</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="app-ecommerce-dashboard.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-shopping-cart"></i>
-                          <div data-i18n="eCommerce">eCommerce</div>
+                          <div data-i18n="Tampoco">Tampoco</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="app-logistics-dashboard.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-truck"></i>
-                          <div data-i18n="Logistics">Logistics</div>
+                          <div data-i18n="Mas arriba">Mas arriba</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="app-academy-dashboard.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-book"></i>
-                          <div data-i18n="Academy">Academy</div>
+                          <div data-i18n="Muy Abajo">Muy Abajo</div>
                         </a>
                       </li>
                     </ul>
@@ -1082,12 +1082,12 @@
                       <li class="menu-item active">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                           <i class="menu-icon icon-base ti tabler-user-circle"></i>
-                          <div data-i18n="User Profile">User Profile</div>
+                          <div data-i18n="Perfil del Usuario">Perfil del Usuario</div>
                         </a>
                         <ul class="menu-sub">
                           <li class="menu-item active">
-                            <a href="pages-profile-user.html" class="menu-link">
-                              <div data-i18n="Profile">Profile</div>
+                            <a href="{{ route('user.profile') }}" class="menu-link">
+                              <div data-i18n=""Perfil">Perfil</div>
                             </a>
                           </li>
                           <li class="menu-item">

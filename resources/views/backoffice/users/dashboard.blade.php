@@ -105,7 +105,7 @@
                     </svg>
                   </span>
                 </span>
-                <span class="app-brand-text demo menu-text fw-bold text-heading">Vuexy</span>
+                <span class="app-brand-text demo menu-text fw-bold text-heading">Sonkei FC</span>
               </a>
 
               <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
@@ -578,7 +578,7 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <h6 class="mb-0">John Doe</h6>
+                            <h6 class="mb-0">{{ $user->name }}</h6>
                             <small class="text-body-secondary">Admin</small>
                           </div>
                         </div>
@@ -588,15 +588,15 @@
                       <div class="dropdown-divider my-1 mx-n2"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="pages-profile-user.html">
+                      <a class="dropdown-item" href="{{ route('user.profile') }}">
                         <i class="icon-base ti tabler-user me-3 icon-md"></i
-                        ><span class="align-middle">My Profile</span>
+                        ><span class="align-middle">Mi Perfil</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="pages-account-settings-account.html">
                         <i class="icon-base ti tabler-settings me-3 icon-md"></i
-                        ><span class="align-middle">Settings</span>
+                        ><span class="align-middle">Configuración</span>
                       </a>
                     </li>
                     <li>
@@ -626,10 +626,14 @@
                       </a>
                     </li>
                     <li>
-                      <div class="d-grid px-2 pt-2 pb-1">
-                        <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html" target="_blank">
-                          <small class="align-middle">Logout</small>
-                          <i class="icon-base ti tabler-logout ms-2 icon-14px"></i>
+                    <div class="d-grid px-2 pt-2 pb-1">
+                    <form method="POST" action="{{ route('logout') }}" class="d-grid px-2 pt-2 pb-1">
+                    @csrf
+                    <button class="btn btn-sm btn-danger d-flex" type="submit">
+                        <small class="align-middle">Cerrar Sesión</small>
+                        <i class="icon-base ti tabler-logout ms-2 icon-14px"></i>
+                    </button>
+                </form>
                         </a>
                       </div>
                     </li>
@@ -652,40 +656,40 @@
               <div class="container-xxl d-flex h-100">
                 <ul class="menu-inner">
                   <!-- Dashboards -->
-                  <li class="menu-item active">
+                  <li class="menu-item">
                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                       <i class="menu-icon icon-base ti tabler-smart-home"></i>
                       <div data-i18n="Dashboards">Dashboards</div>
                     </a>
                     <ul class="menu-sub">
-                      <li class="menu-item active">
-                        <a href="dashboards-analytics.html" class="menu-link">
+                      <li class="menu-item">
+                        <a href="{{ route('user.dashboard') }}" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-chart-pie-2"></i>
-                          <div data-i18n="Analytics">Analytics</div>
+                          <div data-i18n="Dashboard Principal">Dashboard Principal</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="dashboards-crm.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-vector-bezier-circle"></i>
-                          <div data-i18n="CRM">CRM</div>
+                          <div data-i18n="Este NO">Este NO</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="app-ecommerce-dashboard.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-shopping-cart"></i>
-                          <div data-i18n="eCommerce">eCommerce</div>
+                          <div data-i18n="Tampoco">Tampoco</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="app-logistics-dashboard.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-truck"></i>
-                          <div data-i18n="Logistics">Logistics</div>
+                          <div data-i18n="Mas arriba">Mas arriba</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="app-academy-dashboard.html" class="menu-link">
                           <i class="menu-icon icon-base ti tabler-book"></i>
-                          <div data-i18n="Academy">Academy</div>
+                          <div data-i18n="Muy Abajo">Muy Abajo</div>
                         </a>
                       </li>
                     </ul>
@@ -1081,12 +1085,12 @@
                       <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                           <i class="menu-icon icon-base ti tabler-user-circle"></i>
-                          <div data-i18n="User Profile">User Profile</div>
+                          <div data-i18n="Perfil del Usuario">Perfil del Usuario</div>
                         </a>
                         <ul class="menu-sub">
                           <li class="menu-item">
-                            <a href="pages-profile-user.html" class="menu-link">
-                              <div data-i18n="Profile">Profile</div>
+                            <a href="{{ route('user.profile') }}" class="menu-link">
+                              <div data-i18n="Perfil">Perfil</div>
                             </a>
                           </li>
                           <li class="menu-item">
