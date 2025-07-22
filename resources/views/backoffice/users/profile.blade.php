@@ -1858,16 +1858,51 @@
                   <!-- About User -->
                   <div class="about-section">
     <h2> {{ $user->name }}</h2>
-    <p>
-        <strong>Edad:</strong> {{ $user->age ?? 'N/A' }}<br>
-        <strong>Email:</strong> {{ $user->username ?? 'N/A' }}<br>
-        <strong>Dirección:</strong> {{ $user->address ?? 'N/A' }}<br>
-        <strong>Comuna:</strong> {{ $user->commune ?? 'N/A' }}<br>
-        <strong>Teléfono 1:</strong> {{ $user->phone_number_1 ?? 'N/A' }}<br>
-        <strong>Teléfono 2:</strong> {{ $user->phone_number_2 ?? 'N/A' }}<br>
-        <strong>Fecha de Creación:</strong> {{ $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : 'N/A' }} {{-- Added --}}
-    </p>
-    </p>
+    <br>
+<div class="card mb-6">
+<div class="card-body">
+<p class="card-text text-uppercase text-body-secondary small">Información del Perfil</p>
+<ul class="list-unstyled mb-0">
+<li class="d-flex align-items-center mb-4">
+<i class="icon-base ti tabler-calendar icon-lg"></i>
+<span class="fw-medium mx-2">Edad:</span> <span>{{ $user->age ?? 'N/A' }}</span>
+</li>
+ 
+      <li class="d-flex align-items-center mb-4">
+<i class="icon-base ti tabler-mail icon-lg"></i>
+<span class="fw-medium mx-2">Correo:</span> <span>{{ $user->username ?? 'N/A' }}</span>
+</li>
+ 
+      <li class="d-flex align-items-center mb-4">
+<i class="icon-base ti tabler-map-pin icon-lg"></i>
+<span class="fw-medium mx-2">Dirección:</span> <span>{{ $user->address ?? 'N/A' }}</span>
+</li>
+ 
+      <li class="d-flex align-items-center mb-4">
+<i class="icon-base ti tabler-map icon-lg"></i>
+<span class="fw-medium mx-2">Comuna:</span> <span>{{ $user->commune ?? 'N/A' }}</span>
+</li>
+ 
+      <li class="d-flex align-items-center mb-4">
+<i class="icon-base ti tabler-phone icon-lg"></i>
+<span class="fw-medium mx-2">Teléfono 1:</span> <span>{{ $user->phone_number_1 ?? 'N/A' }}</span>
+</li>
+ 
+      <li class="d-flex align-items-center mb-4">
+<i class="icon-base ti tabler-phone-calling icon-lg"></i>
+<span class="fw-medium mx-2">Teléfono 2:</span> <span>{{ $user->phone_number_2 ?? 'N/A' }}</span>
+</li>
+ 
+      <li class="d-flex align-items-center">
+<i class="icon-base ti tabler-clock-hour-5 icon-lg"></i>
+<span class="fw-medium mx-2">Fecha de Creación:</span>
+<span>{{ $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : 'N/A' }}</span>
+</li>
+</ul>
+</div>
+</div>
+ 
+
 
     <button class="btn btn-primary mb-1" id="edit-profile-button">Editar Perfil</button>
 </div>
