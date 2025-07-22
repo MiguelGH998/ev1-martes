@@ -1828,7 +1828,7 @@
                               </li>
                             </ul>
                           </div>
-                          <a href="javascript:void(0)" class="btn btn-primary mb-1">
+                          <a href="javascript:void(0)" class="btn btn-success mb-1">
                             <i class="icon-base ti tabler-user-check icon-xs me-2"></i>Online
                            
                           </a>
