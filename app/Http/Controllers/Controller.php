@@ -17,5 +17,12 @@ abstract class Controller
         'password.confirmation' => 'Las contraseñas no coinciden.',
         'password.confirmation.required' => 'La confirmación de la contraseña es requerida.',
         
+        
+        'rut.required' => 'El RUT es requerido.',
+        'rut.min' => 'El RUT debe tener al menos 8 caracteres.',
+        'rut.max' => 'El RUT no debe exceder los 12 caracteres.',
+        'rut.pattern' => 'El RUT debe tener un formato válido.',
+        'rut.unique' => 'Este RUT ya está en uso. Por favor, elige otro.',
+
     ];
 }

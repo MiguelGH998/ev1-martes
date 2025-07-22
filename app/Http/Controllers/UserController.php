@@ -49,13 +49,15 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Password::defaults()],
+            'rut' => ['required', 'string', 'max:12', 'unique:' . User::class], // Add RUT validation rule
         ], $this->messages);
-
+      
         // 3. Creación del nuevo usuario en la base de datos
         $user = User::create([
             'name' => $request->name,
             'username' => $request->username,
             'password' => Hash::make($request->password),
+            'rut' => $request->rut, // Save RUT to the database
         ]);
 
         // Opcional: Disparar el evento Registered si necesitas enviar correos de verificación, etc.
@@ -109,7 +111,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
 
-            return redirect()->route('user.profile')->with('success', "Bienvenido {$user->name}, tiene una sesión iniciada exitosamente.");
+            return redirect()->route('user.dashboard')->with('success', "Bienvenido {$user->name}, tiene una sesión iniciada exitosamente.");
         }
 
         return back()->withErrors([
@@ -128,6 +130,11 @@ class UserController extends Controller
     {
         $user = Auth::user(); // Get the authenticated user
         return view('backoffice/users/profile', compact('user'));
+    }
+    public function showDashboard()
+    {
+        $user = Auth::user();
+        return view('backoffice/users/dashboard', compact('user'));
     }
 
     public function updateProfile(Request $request)
@@ -161,6 +168,35 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
-
-
+    function validarRUT($rut) {
+        // Limpiar RUT (quitar puntos y guion)
+        $rut = preg_replace('/[^0-9kK]/', '', $rut);
+     
+        // Si es muy corto, no es válido
+        if (strlen($rut) < 2) return false;
+     
+        // Separar cuerpo y dígito verificador
+        $cuerpo = substr($rut, 0, -1);
+        $dv = strtoupper(substr($rut, -1));
+     
+        // Si el cuerpo no es numérico, no es válido
+        if (!ctype_digit($cuerpo)) return false;
+     
+        // Calcular dígito verificador
+        $suma = 0;
+        $multiplo = 2;
+        for ($i = strlen($cuerpo) - 1; $i >= 0; $i--) {
+            $suma += $cuerpo[$i] * $multiplo;
+            $multiplo = ($multiplo < 7) ? $multiplo + 1 : 2;
+        }
+     
+        $resto = $suma % 11;
+        $dvEsperado = 11 - $resto;
+     
+        if ($dvEsperado == 11) $dvEsperado = '0';
+        elseif ($dvEsperado == 10) $dvEsperado = 'K';
+        else $dvEsperado = (string)$dvEsperado;
+     
+        return $dv === $dvEsperado;
+    }
 }

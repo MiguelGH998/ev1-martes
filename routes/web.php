@@ -18,7 +18,7 @@ Route::post('/backoffice/logout', [UserController::class, 'logout'])->name('logo
 
 Route::get('/backoffice/profile', [UserController::class, 'showProfile'])->name('user.profile');
 
-
+Route::get('/backoffice/dashboard', [UserController::class, 'showDashboard'])->name('user.dashboard');
 
 Route::put('/backoffice/profile', [UserController::class, 'updateProfile'])->name('backoffice.profile.update');
 

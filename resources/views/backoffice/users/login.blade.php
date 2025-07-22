@@ -122,6 +122,18 @@
                   placeholder="Ingrese su usuario"
                   autofocus />
               </div>
+              <div class="mb-6 form-control-validation">
+    <label for="rut" class="form-label">RUT</label>
+    <input
+        type="text"
+        class="form-control"
+        id="rut"
+        name="rut"
+        placeholder="Ingrese su RUT"
+        autofocus />
+</div>
+
+
               <div class="mb-6 form-password-toggle form-control-validation">
                 <label class="form-label" for="password">Contraseña</label>
                 <div class="input-group input-group-merge">
@@ -202,4 +214,77 @@
     <!-- Page JS -->
     <script src="/vuexy/assets/js/pages-auth.js"></script>
   </body>
+  <script>
+document.getElementById('rut').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/[^0-9kK]/g, ''); // Permite solo números y K
+        // Limita la longitud a 9 caracteres ANTES de formatear
+        if (value.length > 9) {
+            value = value.slice(0, 9);
+        }
+        e.target.value = formatRut(value); // Aplica el formato
+    });
+ 
+ 
+ 
+document.getElementById('rut').addEventListener('blur', function (e) {
+    let rut = e.target.value;
+    if (rut) {
+        rut = formatRut(rut);
+        e.target.value = rut;
+        if (checkRut(rut)) {
+            e.target.classList.remove('is-invalid');
+            e.target.classList.add('is-valid');
+        } else {
+            e.target.classList.add('is-invalid');
+            e.target.classList.remove('is-valid');
+        }
+    } else {
+         e.target.classList.remove('is-invalid', 'is-valid');
+    }
+});
+ 
+function formatRut(rut) {
+    rut = rut.replace(/[^0-9kK]/g, '');
+    if (rut.length < 2) {
+        return rut;
+    }
+    const body = rut.slice(0, -1);
+    const dv = rut.slice(-1).toUpperCase();
+    return body.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + dv;
+}
+ 
+function checkRut(rut) {
+    // Eliminar puntos y guion del RUT para la validación
+    rut = rut.replace(/\\./g, '').replace('-', '');
+ 
+    // Validar formato básico: solo números y K al final
+    if (!/^[0-9]+[0-9kK]$/.test(rut)) {
+        return false;
+    }
+ 
+    const body = rut.slice(0, -1);
+    let dv = rut.slice(-1).toUpperCase();
+ 
+    // Si el cuerpo tiene menos de 2 dígitos, no es un RUT válido
+    if (body.length < 2) {
+        return false;
+    }
+ 
+    let suma = 0;
+    let multiplier = 2;
+ 
+    // Calcular el dígito verificador
+    for (let i = body.length - 1; i >= 0; i--) {
+        suma += parseInt(body[i], 10) * multiplier;
+        multiplier = multiplier < 7 ? multiplier + 1 : 2;
+    }
+ 
+    const expectedDv = 11 - (suma % 11);
+    const calculatedDv = (expectedDv === 11) ? '0' : ((expectedDv === 10) ? 'K' : expectedDv.toString());
+ 
+    return calculatedDv === dv;
+}
+ 
+</script>
+ 
 </html>
